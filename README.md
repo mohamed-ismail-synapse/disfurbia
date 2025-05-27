@@ -16,12 +16,15 @@ A hardware engineer's attempt at forcing an LLM-based chat bot to only speak thr
 
 ## Installation & Setup
 1. Install uv (recommended for fast, reliable Python package management):
-2. Install dependencies:
+2. Create a virtual environment and install dependencies:
    ```powershell
+   uv venv
+   .venv\Scripts\activate
    uv pip install -r pyproject.toml
    ```
 
 ## Usage
+Bleak is the name of the BLE library in use, so the bleak_* scripts are used to communicate with and control Furby.
 - To scan for BLE devices and test Furby connection:
   ```powershell
   python bleak_scan_test.py
@@ -30,11 +33,25 @@ A hardware engineer's attempt at forcing an LLM-based chat bot to only speak thr
   ```powershell
   python bleak_furby_test.py
   ```
-- To run the MCP server (for LLM/chatbot integration):
+
+Separate from the Furby experimentation work, I was toying with this idea of making an chat bot that evaluated a user's joke and caused the Furby to react accordingly. After I realized how complicated loading custom audio via DLC onto Furby could be, I decided just to experiment with MCP client/server interactions to teach myself how it works. I made some audio recordings as placeholders to different reactions, advertised them on an mcp-server, and then used an mcp-client to play the various audio files. It worked. I'll mess with this more later.
+
+- Check that fastmcp is running:
+  ```powershell
+  fastmcp version
+  ```
+You can run mcp_server_using_fastmcp.py through python or through fastmcp. Running via python will set up the server according to the transport method coded into the script. Running via fastmcp allows you to pick a different transport method in the command line.
+
+- To run the MCP server through python:
   ```powershell
   python mcp_server_using_fastmcp.py
   ```
-- To run the MCP client:
+- To run the MCP server through fastmcp and set it up to be available via http://127.0.0.1:8000/mcp:
+  ```powershell
+  fastmcp run mcp_server_using_fastmcp.py --transport streamable-http --port 8000
+  ```
+
+- To run the MCP client, which is set up to look for an MCP server at http://localhost:8000/mcp:
   ```powershell
   python mcp_client_using_fastmcp.py
   ```

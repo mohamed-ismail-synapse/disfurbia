@@ -1,5 +1,5 @@
 [project]
-name = "gigglebot-mcp-server"
+name = "disfurbia"
 version = "0.1.0"
 dependencies = [
     "asyncio>=3.4.3",
