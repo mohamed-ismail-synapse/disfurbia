@@ -1,0 +1,9 @@
+[project]
+name = "gigglebot-mcp-server"
+version = "0.1.0"
+dependencies = [
+    "asyncio>=3.4.3",
+    "bleak>=0.22.3",
+    "fastmcp>=2.5.1",
+    "pygame>=2.6.1",
+]
