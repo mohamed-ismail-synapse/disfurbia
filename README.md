@@ -34,7 +34,7 @@ Bleak is the name of the BLE library in use, so the bleak_* scripts are used to 
   python bleak_furby_test.py
   ```
 
-Separate from the Furby experimentation work, I was toying with this idea of making an chat bot that evaluated a user's joke and caused the Furby to react accordingly. After I realized how complicated loading custom audio via DLC onto Furby could be, I decided just to experiment with MCP client/server interactions to teach myself how it works. I made some audio recordings as placeholders to different reactions, advertised them on an mcp-server, and then used an mcp-client to play the various audio files. It worked. I'll mess with this more later.
+Separate from the Furby experimentation work, I was toying with this idea of making a chat bot that evaluated a user's joke and caused the Furby to react accordingly. After I realized how complicated loading custom audio via DLC onto Furby could be, I decided just to experiment with MCP client/server interactions to teach myself how it works. I made some audio recordings as placeholders to different reactions, advertised them on an mcp-server, and then used an mcp-client to play the various audio files. It worked. I'll mess with this more later.
 
 - Check that fastmcp is running:
   ```powershell

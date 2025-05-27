@@ -2,9 +2,12 @@ import asyncio
 import time
 from bleak import BleakScanner, BleakClient
 
+# UUIDs for the Furby BLE service and characteristics
+# There are more UUIDs for other services, but these are the ones used for action commands
 RX_CHAR_UUID = "dab91382-b5a1-e29c-b041-bcd562613bde"
 TX_CHAR_UUID = "dab91383-b5a1-e29c-b041-bcd562613bde"
 
+# Pre-selected Furby commands used for testing
 FURBY_COMMANDS = {
     "fart":   bytes([0x13, 0x00, 0x01, 0x02, 0x01, 0x04]),
     "snore":  bytes([0x13, 0x00, 0x4a, 0x00, 0x00, 0x01]),
@@ -14,6 +17,7 @@ FURBY_COMMANDS = {
 
 last_command_time = 0.0
 
+# Command to keep Furby focused and not constantly reacting like a caffeinated child
 KEEP_ALIVE_CMD = bytes([0x20, 0x06])
 KEEP_ALIVE_RESP_PREFIX = b'\x22'
 
