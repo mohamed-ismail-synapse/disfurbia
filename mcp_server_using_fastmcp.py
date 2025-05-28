@@ -1,4 +1,5 @@
 from fastmcp import FastMCP
+import json
 
 import threading
 import pygame
@@ -63,6 +64,16 @@ def say_goodbye() -> str:
     """Say goodbye"""
     threading.Thread(target=play_sound, args=(SOUNDS["say_goodbye"],)).start()
     return "Bye-bye! Come back with more jokes soon."
+
+def load_action_list(path="actionlist.json"):
+    """Load the Furby action list from a JSON file."""
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+@app.tool()
+def list_furby_actions() -> list:
+    """List all available Furby actions and their descriptions/values."""
+    return load_action_list()
 
 if __name__ == "__main__":
     app.run()
